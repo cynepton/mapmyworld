@@ -10,7 +10,7 @@
 
   <!-- Mapping Node -->
   <group ns="rtabmap">
-    <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" output="screen" args="--delete_db_on_start">
+    <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" output="screen">
 
       <!-- Basic RTAB-Map Parameters 
       https://github.com/introlab/rtabmap/blob/master/corelib/include/rtabmap/core/Parameters.h#L161
@@ -53,8 +53,11 @@
       <!-- Minimum visual inliers to accept loop closure -->
       <param name="Vis/MinInliers" type="string" value="15"/>
 
-      <!-- Set to false to avoid saving data when robot is not moving -->
+      <!-- Set to false to avoid saving data when robot is not moving not needed for localization 
       <param name="Mem/NotLinkedNodesKept" type="string" value="false"/>
+      -->
+       <!-- true is SLAM mode, false is localizatio mode  -->
+      <param name="IncrementalMemory" type="string" value="false"/>
     </node>
   </group>
 
