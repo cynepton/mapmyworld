@@ -1,5 +1,5 @@
 # Map My World
-SLAM operation on a mobile robot using rtap_map ROS package 
+SLAM operation on a mobile robot using  the [rtabmap_ros](http://wiki.ros.org/rtabmap_ros) package from ROS.
 
 ### Github Repsitory Link
 https://github.com/cynepton/mapmyworld
@@ -29,7 +29,7 @@ This documentation follows the steps taken to acheive the project results. The s
 
 RTAB-Map (Real-Time Appearance-Based Mapping) is a popular solution for SLAM to develop robots that can map environments in 3D. RTAB-Map has good speed and memory management, and it provides custom developed tools for information analysis. Most importantly, the quality of the documentation on [ROS Wiki](http://wiki.ros.org/rtabmap_ros) is very high. Being able to leverage RTAB-Map with your own robots will lead to a solid foundation for mapping and localization well beyond this Nanodegree program.
 
-For this project we will be using the `rtabmap_ros` package, which is a ROS wrapper (API) for interacting with RTAB-Map. Keep this in mind when looking at the relative documentation.
+For this project I used the `rtabmap_ros` package, which is a ROS wrapper (API) for interacting with RTAB-Map. Keep this in mind when looking at the relative documentation.
 
 #### The project flow will be as follows:
 
