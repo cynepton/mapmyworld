@@ -1,22 +1,31 @@
 # Map My World
 SLAM operation on a mobile robot using rtap_map ROS package 
 
-Welcome to Map My World! In this project I created a 2D occupancy grid and 3D octomap from a simulated environment using your own robot with the RTAB-Map package.
-This documentation follows the steps taken to acheive the project results. The same robot used in the [localization project](https://github.com/cynepton/where-am-i) is used.
+### Github Repsitory Link
+https://github.com/cynepton/mapmyworld
 
 ## Working with this project
+### Requirements
+- ROS (It comes with Gazebo installed)
+  - For Ubuntu 16.04, install [ROS Kinetic Kame](http://wiki.ros.org/kinetic/Installation/Ubuntu)
+  - For Ubuntu 18.04, install [ROS Melodic Morenia](http://wiki.ros.org/melodic/Installation)
+
+
 1. Clone the repository:
     ```
     git clone -b master https://github.com/cynepton/mapmyworld.git
     ```
 2. Navigate to the `catkin_mapmyworld` folder and run:
-```
-catkin_make
-```
+    ```
+    catkin_make
+    ```
 
-## 
+## Project Creation Process
 
 ## Overview
+
+Welcome to Map My World! In this project I created a 2D occupancy grid and 3D octomap from a simulated environment using your own robot with the RTAB-Map package.
+This documentation follows the steps taken to acheive the project results. The same robot used in the [localization project](https://github.com/cynepton/where-am-i) is used.
 
 RTAB-Map (Real-Time Appearance-Based Mapping) is a popular solution for SLAM to develop robots that can map environments in 3D. RTAB-Map has good speed and memory management, and it provides custom developed tools for information analysis. Most importantly, the quality of the documentation on [ROS Wiki](http://wiki.ros.org/rtabmap_ros) is very high. Being able to leverage RTAB-Map with your own robots will lead to a solid foundation for mapping and localization well beyond this Nanodegree program.
 
@@ -161,6 +170,8 @@ Read through the code and the comments to understand what each part is accomplis
 
 You should find the actual topics that the robot is publishing to, in the robot's `urdf` file. When you find the correct ones, substitute them in the `<arg>` tags at the beginning of this launch file. Then your mapping node could find all required information to perform RTAB-Mapping!
 
+**Important: Change the `robot_footprint` value to whatever your robot footprint name is**
+
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 
@@ -178,7 +189,7 @@ You should find the actual topics that the robot is publishing to, in the robot'
 
       <!-- Basic RTAB-Map Parameters -->
       <param name="database_path"       type="string" value="$(arg database_path)"/>
-      <param name="frame_id"            type="string" value="base_footprint"/>
+      <param name="frame_id"            type="string" value="robot_footprint"/>
       <param name="odom_frame_id"       type="string" value="odom"/>
       <param name="subscribe_depth"     type="bool"   value="true"/>
       <param name="subscribe_scan"      type="bool"   value="true"/>
@@ -235,12 +246,14 @@ Another tool that you can use is rtabmapviz, which is an additional node for rea
 
 If you would like to enable it for mapping, add this code snippet to the `mapping.launch file`. This will launch the `rtabmapviz` GUI and provide you with realtime feature detection, loop closures, and other relevant information to the mapping process.
 
+**Important: Change the `robot_footprint` value to whatever your robot footprint name is**
+
 ```
 <!-- visualization with rtabmapviz -->
     <node pkg="rtabmap_ros" type="rtabmapviz" name="rtabmapviz" args="-d $(find rtabmap_ros)/launch/config/rgbd_gui.ini" output="screen">
         <param name="subscribe_depth"             type="bool" value="true"/>
         <param name="subscribe_scan"              type="bool" value="true"/>
-        <param name="frame_id"                    type="string" value="base_footprint"/>
+        <param name="frame_id"                    type="string" value="robot_footprint"/>
 
         <remap from="rgb/image"       to="$(arg rgb_topic)"/>
         <remap from="depth/image"     to="$(arg depth_topic)"/>
