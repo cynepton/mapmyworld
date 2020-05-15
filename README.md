@@ -2,7 +2,19 @@
 SLAM operation on a mobile robot using rtap_map ROS package 
 
 Welcome to Map My World! In this project I created a 2D occupancy grid and 3D octomap from a simulated environment using your own robot with the RTAB-Map package.
-This documentation follows the steps taken to acheive the project results. The robot used in the [localization project](https://github.com/cynepton/where-am-i) will be needed.
+This documentation follows the steps taken to acheive the project results. The same robot used in the [localization project](https://github.com/cynepton/where-am-i) is used.
+
+## Working with this project
+1. Clone the repository:
+    ```
+    git clone -b master https://github.com/cynepton/mapmyworld.git
+    ```
+2. Navigate to the `catkin_mapmyworld` folder and run:
+```
+catkin_make
+```
+
+## 
 
 ## Overview
 
