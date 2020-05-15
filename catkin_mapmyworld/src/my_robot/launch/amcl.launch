@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- TODO: Add nodes here -->
+
+  <!--Defines Map file argument here -->
+  <arg name="map_file" default="$(find my_robot)/maps/map.yaml"/>
+
+  <!--launch map_server node-->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+  
+  <!--node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster"
+      args="0 0 0 0 0 0 map odom 100"/-->
+
+  <!-- AMCL Node -->
+  <node name="amcl" pkg="amcl" type="amcl" output="screen">
+    <!--remap from="scan" to="my_robot/laser/scan"/--> 
+    
+    <param name="odom_frame_id" value="odom"/> <!--string, default: "odom"): Which frame to use for odometry-->
+    
+    <param name="odom_model_type" value="diff-corrected"/> <!--(string, default: "diff"): Which model to use, either "diff", "omni", "diff-corrected" or "omni-corrected"-->
+    
+    <param name="base_frame_id" value="robot_footprint"/> <!--(string, default: "base_link"): Which frame to use for the robot base-->
+    <param name="global_frame_id" value="map"/><!--(string, default: "map"): The name of the coordinate frame published by the localization system-->
+  
+    <!-- initial robot position -->
+    <param name="initial_pose_x" value="0"/>
+    <param name="initial_pose_y" value="0"/>
+
+    <!-- Parameters   http://wiki.ros.org/amcl/#Parameters -->
+    <param name="transform_tolerance" value="0.2"/>
+    <param name="min_particles" value="100"/>
+    <param name="max_particles" value="1000"/>
+    <param name="initial_pose_a" value="-1.5707"/>
+    <param name="update_min_a" value="pi/6.0"/>
+    <param name="update_min_d" value="0.1"/>
+    <param name="tf_broadcast" value="true"/>
+    <param name="laser_min_range" value="0.1"/>
+    <param name="laser_max_range" value="10"/>
+    <param name="laser_max_beams" value="30"/>
+    <param name="laser_z_hit" value="0.95"/>
+    <param name="laser_z_rand" value="0.05"/>
+    <param name="odom_alpha1" value="0.02"/>
+    <param name="odom_alpha2" value="0.02"/>
+    <param name="odom_alpha3" value="0.02"/>
+    <param name="odom_alpha4" value="0.02"/>
+    <param name="odom_alpha5" value="0.02"/>
+  </node>
+
+
+  <!-- Move Base -->
+  <node name="move_base" pkg="move_base" type="move_base" respawn="false" output="screen">
+    <!--remap from="scan" to="my_robot/laser/scan"/-->
+    <param name="base_global_planner" value="navfn/NavfnROS" />
+    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
+    <rosparam file="$(find my_robot)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find my_robot)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find my_robot)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find my_robot)/config/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find my_robot)/config/base_local_planner_params.yaml" command="load" />
+  </node>
+
+
+</launch>
