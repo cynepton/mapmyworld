@@ -23,15 +23,15 @@ https://drive.google.com/file/d/1WmD10BzOAxFMnnJDwFdVZdZzSDvcHr2b/view?usp=shari
     ```
 3. First, launch the Gazebo world and RViz, spawn the robot in the environment:
     ```
-    roslaunch <YOUR PACKAGE NAME> world.launch
+    roslaunch my_robot world.launch
     ```
 4. Then, launch the `teleop` node:
     ```
     rosrun teleop_twist_keyboard teleop_twist_keyboard.py
     ```
-5. Finally, launch your mapping node:
+5. Finally, launch the mapping node:
     ```
-    roslaunch <YOUR PACKAGE NAME> mapping.launch
+    roslaunch my_robot mapping.launch
     ```
 
 6. Navigate the robot in the simulation to create map for the environment! When you are all set, terminal the node and you could find your map `db` file in the place you specified in the `launch` file. If you did not modify the argument, it will be located in the `/root/.ros/` folder.
