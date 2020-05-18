@@ -356,7 +356,7 @@ You can also watch the free Udacity course [AI for Robotics](https://classroom.u
 
 ### Interesting content on SLAM
 - [Bag of words Explained in Video](https://www.youtube.com/watch?v=a4cFONdc6nc)
-- [Bag of words Explained in Code]https://nbviewer.jupyter.org/github/ovysotska/in_simple_english/blob/master/bag_of_visual_words.ipynb
+- [Bag of words Explained in Code](https://nbviewer.jupyter.org/github/ovysotska/in_simple_english/blob/master/bag_of_visual_words.ipynb)
 - [facebook & SLAM: Bringing art to life through technology](https://ai.facebook.com/blog/slam-bringing-art-to-life-through-technology/)
 - [facebook & SLAM: Powered by AI: Oculus Insight](https://ai.facebook.com/blog/powered-by-ai-oculus-insight/)
 - [SLAM (Simultaneous Localization And Mapping) Tracking Technology As Explained By Facebook](https://www.youtube.com/watch?v=bAl6hpS0ME0)
