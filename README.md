@@ -27,6 +27,10 @@ https://drive.google.com/file/d/1WmD10BzOAxFMnnJDwFdVZdZzSDvcHr2b/view?usp=shari
     ```
 4. Then, launch the `teleop` node:
     ```
+    roslaunch my_robot teleop.launch
+    ```
+    or
+    ```
     rosrun teleop_twist_keyboard teleop_twist_keyboard.py
     ```
 5. Finally, launch the mapping node:
